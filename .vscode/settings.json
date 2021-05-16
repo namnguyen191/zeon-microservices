@@ -1,0 +1,12 @@
+{
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"   
+    },
+    "prettier.singleQuote": true,
+    // "files.autoSave": "afterDelay",
+    // "files.autoSaveDelay": 30000,
+    "yaml.schemas": {
+        
+        "kubernetes": "/infra/k8s/*.yaml"
+    }
+}
