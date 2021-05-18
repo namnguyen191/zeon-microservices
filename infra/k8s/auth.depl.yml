@@ -13,12 +13,12 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: namng191/zeon-auth-srv
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        - name: auth
+          image: namng191/zeon-auth-srv
+          resources:
+            limits:
+              memory: '1280Mi'
+              cpu: '1000m'
 ---
 apiVersion: v1
 kind: Service
@@ -28,7 +28,7 @@ spec:
   selector:
     app: auth
   ports:
-   -  name: auth
+    - name: auth
       protocol: TCP
       port: 3000
       targetPort: 3000
