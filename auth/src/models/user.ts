@@ -16,16 +16,29 @@ interface UserDoc extends mongoose.Document {
   updatedAt: string;
 }
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    require: true,
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      require: true,
+    },
+    password: {
+      type: String,
+      require: true,
+    },
   },
-  password: {
-    type: String,
-    require: true,
-  },
-});
+  {
+    toJSON: {
+      transform(doc, ret) {
+        // Reformatting _id to id for consistency accross other microservices
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+        delete ret.__v;
+      },
+    },
+  }
+);
 
 userSchema.pre('save', async function (done) {
   if (this.isModified('password')) {
@@ -41,10 +54,5 @@ userSchema.statics.build = (user: IUser) => {
 };
 
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
-
-const user = User.build({
-  email: 'dsadasd',
-  password: 'dasdasd',
-});
 
 export { User };

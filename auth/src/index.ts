@@ -1,6 +1,7 @@
 import express from 'express';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 
 import 'express-async-errors';
 
@@ -12,7 +13,17 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
+
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+  cookieSession({
+    // We disable encryption because JWT token is already encrypted. Also the encryption algorithm will make it hard for other
+    // microservices to decrypt it
+    signed: false,
+    secure: true,
+  })
+);
 
 // Routes
 app.use(currentUserRouter);
@@ -29,6 +40,11 @@ app.all('*', async () => {
 app.use(errorHandler);
 
 const start = async () => {
+  // Check if evironment variables are setup
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY must be defined');
+  }
+
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
       useNewUrlParser: true,
