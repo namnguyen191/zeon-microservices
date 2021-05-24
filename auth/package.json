@@ -4,7 +4,7 @@
   "description": "Users authentication service for Zeon project",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts --poll",
+    "start": "ts-node-dev --poll src/index.ts",
     "tsinit": "tsc --init"
   },
   "author": "Nam Nguyen",

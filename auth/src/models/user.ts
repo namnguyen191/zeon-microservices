@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema(
   {
     toJSON: {
       transform(doc, ret) {
-        // Reformatting _id to id for consistency accross other microservices
+        // Reformatting _id to id for consistency across other microservices
         ret.id = ret._id;
         delete ret._id;
         delete ret.password;
