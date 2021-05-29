@@ -9,12 +9,12 @@ export const errorHandler = (
 ) => {
   if (err instanceof CustomError) {
     return res.status(err.statusCode).send({
-      errors: err.serializeErrors(),
+      errors: err.serializeErrors()
     });
   }
 
-  // Generic error that we haven't catched
+  // Generic error that we haven't caught
   res.status(400).send({
-    errors: [{ message: 'Something went wrong' }],
+    errors: [{ message: 'Something went wrong' }]
   });
 };
