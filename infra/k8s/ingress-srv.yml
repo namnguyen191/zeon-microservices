@@ -7,13 +7,20 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-  - host: zeon.dev
-    http:
-      paths:
-      - pathType: Prefix
-        path: /api/users/?(.*)
-        backend:
-          service:
-            name: auth-srv
-            port: 
-              number: 3000
+    - host: zeon.dev
+      http:
+        paths:
+          - pathType: Prefix
+            path: /api/users/?(.*)
+            backend:
+              service:
+                name: auth-srv
+                port:
+                  number: 3000
+          - pathType: Prefix
+            path: /?(.*)
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
