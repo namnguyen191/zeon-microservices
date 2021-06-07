@@ -1,0 +1,53 @@
+.formContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form {
+    width: 50rem;
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgb(134, 178, 228);
+    padding: 5rem;
+    gap: 2rem;
+    border-radius: 1rem;
+
+    .formGroup {
+      width: 30rem;
+
+      .formControl {
+        padding: 1rem;
+        width: 50%;
+        border-radius: 5px;
+      }
+    }
+
+    .submitButton {
+      width: 6rem;
+      border: none;
+      border-radius: 5px;
+      background-color: aqua;
+      color: #000;
+      cursor: pointer;
+      padding: 1rem;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+.errorsContainer {
+  background-color: rgba($color: rgb(235, 15, 15), $alpha: 0.5);
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+}
