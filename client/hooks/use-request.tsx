@@ -24,7 +24,7 @@ const useRequest = (requestProps: RequestProps) => {
       }
 
       return response.data;
-    } catch (err) {
+    } catch (err: any) {
       setErrors(
         <ul className={styles.errorsContainer}>
           {err.response.data.errors.map((e: any) => (
