@@ -6,5 +6,8 @@
     // "files.autoSaveDelay": 30000,
     "yaml.schemas": {
         "kubernetes": "/infra/k8s/*.yaml"
-    }
+    },
+    "cSpell.words": [
+      "scrypt"
+    ]
 }
