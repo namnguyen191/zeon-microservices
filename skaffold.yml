@@ -26,3 +26,11 @@ build:
             dest: .
           - src: '**/*.scss'
             dest: .
+    - image: namng191/zeon-tickets-srv
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
