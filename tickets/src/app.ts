@@ -1,6 +1,7 @@
 import express from 'express';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
+import { createTicketRouter } from './routes/new';
 
 import 'express-async-errors';
 
@@ -20,6 +21,7 @@ app.use(
 );
 
 // Routes
+app.use(createTicketRouter);
 
 // No route matches
 app.all('*', async () => {
